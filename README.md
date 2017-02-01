@@ -4,28 +4,27 @@ An exercise in problem solving in the functional idiom.
 
 ## Setup
 
-0. If you haven't release your lodown library to `npm` (node package manager), follow the steps in this video to do so:
-    
-    [publishing-npm-packages](https://docs.npmjs.com/getting-started/publishing-npm-packages)
-    
+0. **FORK** this repository on GitHub to your own GitHub account.
 
-1. **FORK** this repository on GitHub to your own GitHub account.
+1. From your FORK, use SSH to clone the repository into a Blank Cloud9 workspace.
 
-2. From your FORK, use SSH to clone the repository into a Blank Cloud9 workspace.
-
-3. Once the Cloud9 workspace is finished initializing, from the bash terminal, run the command:
+2. Once the Cloud9 workspace is finished initializing, from the bash terminal, run the command:
     
         npm install
 
-4. Install your lodown library by running the command and replacing `<my-user-name>` :
+3. Install your lodown library by running the command and replacing `<my-user-name>` :
     
         npm install --save lodown-<my-user-name>
 
-5. Open up `index.js` and import your lodown library using the node `require()` method.
+4. Node is smart enough to find installed modules when you `require()` them by name. Open up `index.js` and import your lodown library using the node `require()` method like:
+
+    `const _ = require("lodown-<my-github-user-name>");`
+
+    Be sure to replace `<my-user-name>` with your actual username, duh. ;P
 
 ## Solve
 
-Code and test your solutions in `index.js`. Customer data is available to you in the Array, `customers`. Utilizing your lodown library, write functions that take the Array of customers and return the following:
+Code and test your solutions in `index.js`. Customer data is available to you in the Array, `customers`. Utilizing your lodown library, write functions that take the Array of customers and return the following (`console.log()` the results):
 
 1. number of males.
 2. number of females
