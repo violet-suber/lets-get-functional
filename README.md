@@ -26,15 +26,16 @@ An exercise in problem solving in the functional idiom.
 
 Code and test your solutions in `index.js`. Customer data is available to you in the Array, `customers`. Utilizing your lodown library, write functions that take the Array of customers and return the following (`console.log()` the results):
 
-1. number of males.
-2. number of females
-2. oldest customer, youngest customer
-3. average balance
-4. how many customer's names begin with some letter
-5. how many customer's friend's names begin with some letter
-6. how many customers are friends
-7. users have tags associated with them: find the top 3 most common tags
-8. create a summary of genders, the output should be:
+1. Find the number of males.
+2. Find the number of females.
+2. Find the name and age of the oldest customer. 
+3. Find the name and age of the youngest customer.
+3. Find the average balance of all the customers.
+4. Find how many customers' names begin with an arbitrary letter.
+5. Find how many of a customer's _friends' names_ begin with an arbitrary letter.
+6. Find how many customers are friends with a customer (by name).
+7. Find the top 3 most common tags among the customers.
+8. Create a summary of genders, the output should be:
     
 ```javascript
 {
