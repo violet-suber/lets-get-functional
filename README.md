@@ -28,14 +28,14 @@ Code and test your solutions in `index.js`. Customer data is available to you in
 
 1. Find the number of males.
 2. Find the number of females.
-2. Find the name and age of the oldest customer. 
-3. Find the name and age of the youngest customer.
-3. Find the average balance of all the customers.
-4. Find how many customers' names begin with an arbitrary letter.
-5. Find how many of a customer's _friends' names_ begin with an arbitrary letter.
-6. Find how many customers are friends with a customer (by name).
-7. Find the top 3 most common tags among the customers.
-8. Create a summary of genders, the output should be:
+3. Find the name and age of the oldest customer. 
+4. Find the name and age of the youngest customer.
+5. Find the average balance of all the customers.
+6. Find how many customers' names begin with an arbitrary letter. Write a function to answer this question, then log an answer.
+7. Find how many customers' _friends'_ names begin with an arbitrary letter. Write a function to answer this question, then log an answer.
+8. Find how many customers are friends with a customer (by name).
+9. Find the top 3 most common tags among the customers.
+10. Create a summary of genders, the output should be:
     
 ```javascript
 {
