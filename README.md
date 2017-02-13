@@ -33,7 +33,7 @@ Code and test your solutions in `index.js`. Customer data is available to you in
 5. Find the average balance of all the customers.
 6. Find how many customers' names begin with an arbitrary letter. Write a function to answer this question, then log an answer.
 7. Find how many customers' _friends'_ names begin with an arbitrary letter. Write a function to answer this question, then log an answer.
-8. Find how many customers are friends with a customer (by name).
+8. Find the names of all customers who are friends with a given customer (by name). i.e. Which customers have that customer's name in their friends list?
 9. Find the top 3 most common tags among the customers.
 10. Create a summary of genders, the output should be:
     
