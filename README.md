@@ -4,19 +4,23 @@ An exercise in problem solving in the functional idiom.
 
 ## Setup
 
-0. **FORK** this repository on GitHub to your own GitHub account.
+0. If you haven't released your lodown library to `npm` (node package manager), follow the steps in this video to do so (using your npm username to create a unique name for your library):
+    
+    <a href="https://docs.npmjs.com/getting-started/publishing-npm-packages" target="_blank">publishing-npm-packages</a>
 
-1. From your FORK, use SSH to clone the repository into a Blank Cloud9 workspace.
+1. **FORK** this repository on GitHub to your own GitHub account.
 
-2. Once the Cloud9 workspace is finished initializing, from the bash terminal, run the command:
+2. From your FORK, use SSH to clone the repository into a Blank Cloud9 workspace.
+
+3. Once the Cloud9 workspace is finished initializing, from the bash terminal, run the command:
     
         npm install
 
-3. Install your lodown library by running the command and replacing `<my-user-name>` :
+4. Install your lodown library by running the command and replacing `<my-user-name>` :
     
         npm install --save lodown-<my-user-name>
 
-4. Node is smart enough to find installed modules when you `require()` them by name. Open up `index.js` and import your lodown library using the node `require()` method like:
+5. Node is smart enough to find installed modules when you `require()` them by name. Open up `index.js` and import your lodown library using the node `require()` method like:
 
     `const _ = require("lodown-<my-github-user-name>");`
 
@@ -45,4 +49,6 @@ Code and test your solutions in `index.js`. Customer data is available to you in
 }
 ```
 
-Remember, in the node.js environment, you can both `console.log()` or use the dubugger to step through your code and inspect your work.
+You should solve this using `reduce()`.
+
+Remember, in the node.js environment, you can both `console.log()` or use the dubugger to step through your code and inspect your work. Using the dubugger and stepping through your code will help you better understand the relationships and lifecycle of the Functions in your `lodown` library.
