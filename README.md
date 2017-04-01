@@ -4,7 +4,7 @@ An exercise in problem solving in the functional idiom.
 
 ## Setup
 
-0. If you haven't released your lodown library to `npm` (node package manager), follow the steps in this video to do so (using your npm username to create a unique name for your library):
+0. If you haven't released your lodown library to `npm` (node package manager), follow the steps in this video to do so (using your GitHub username to create a unique name for your library):
     
     <a href="https://docs.npmjs.com/getting-started/publishing-npm-packages" target="_blank">publishing-npm-packages</a>
 
