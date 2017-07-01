@@ -14,69 +14,106 @@ const customers = require("./data/customers.json");
  * 2. Solve all problems as outlined in the README.
  */
 
-var genders = _.pluck(customers, "gender");
-
 //1. NUMBER OF MALES
+
+function numberMales(collection) {
+    
+var genders = _.pluck(collection, "gender");
 
 var malesArray = _.filter(genders, function(males){
     return males === "male";
 });
 
-var numberMales = malesArray.length;
+return malesArray.length;
 
-console.log(numberMales);
+}
+
+console.log(numberMales(customers));
 
 //2. NUMBER OF FEMALES
+
+function numberFemales(collection){
+
+var genders = _.pluck(collection, "gender");
 
 var femalesArray = _.filter(genders, function(females){
     return females === "female";
 });
 
-var numberFemales = femalesArray.length;
+return femalesArray.length;
 
-console.log(numberFemales);
+}
 
-var ages = _.pluck(customers, "age");
-
-console.log(ages);
+console.log(numberFemales(customers));
 
 //3. NAME/AGE OF OLDEST CUSTOMER
 
+function findOldest(collection){
+var ages = _.pluck(collection, "age");
+
 var oldest = Math.max.apply(Math, ages);
 
-_.each(customers, function(v, i, a){
-    _.each(v, function(key, obj){
-        if (obj.age === oldest) {
-            console.log(v);
-        }
-    });
-});
+var oldestData = {};
 
-//Find the object in customers that contains age: oldest and return name and age
+_.each(customers, function(v, i, a){
+    if(v.age === oldest){
+        oldestData.name = v.name;
+        oldestData.age =  v.age;
+    }
+});
+return oldestData;
+}
+
+console.log(findOldest(customers));
 
 //4. NAME/AGE OF YOUNGEST CUSTOMER
 
+function findYoungest(collection){
+var ages = _.pluck(collection, "age");
 var youngest = Math.min.apply(Math, ages);
 
-//Find the object in customers that contains age: oldest and return name and age
+var youngestData = {};
+
+_.each(customers, function(v, i, a){
+    if(v.age === youngest){
+        youngestData.name = v.name;
+        youngestData.age =  v.age;
+    }
+});
+
+return youngestData;
+}
+
+console.log(findYoungest(customers));
 
 //5. AVERAGE BALANCE OF ALL CUSTOMERS
 
-var balances = _.pluck(customers, "balance");
+function averageBal(collection){
+var balances = _.pluck(collection, "balance");
+var newBalances = [];
 
 _.each(balances, function(v, i, a){
-    v.replace("$", "");
+    var noCommas = v.replace(/,/g, "");
+    var noDollarS = noCommas.replace(/\$/g, "");
+    newBalances.push(noDollarS);
 });
 
-console.log(balances);
+var balancesTotal = 0;
 
-//Take off dollar signs and commas, convert string to number, add all together and divide by balances.length
+_.each(newBalances, function(v, i, a){
+   balancesTotal += Number(v); 
+});
 
-//6. NAMES OF CUSTOMERS THAT BEGIN WITH A LETTER
+var average = balancesTotal / balances.length; 
+return average;
+}
 
-var names = (_.pluck(customers, "name"));
+console.log(averageBal(customers));
 
-function isLetter(letter) {
+//6. NUMBER OF CUSTOMERS THAT BEGIN WITH A LETTER
+
+function isLetter(collection, letter) {
+var names = _.pluck(collection, "name");
 
 var filtered = _.filter(names, function(value, index){
     return value[0] === letter.toUpperCase();
@@ -85,12 +122,12 @@ var filtered = _.filter(names, function(value, index){
 return filtered.length;
 }
 
-console.log(isLetter("s"));
+console.log(isLetter(customers, "s"));
 
 //7. NAMES OF A CUSTOMERS' FRIENDS THAT BEGIN WITH A LETTER
 
-function friendsWithLetter(customerName, letter) {
-var filtered = _.filter(customers, function(value){
+function friendsWithLetter(collection, customerName, letter) {
+var filtered = _.filter(collection, function(value){
     var noCase = value.name.toUpperCase();
     var noCase2 = customerName.toUpperCase();
     return noCase === noCase2;
@@ -106,15 +143,15 @@ var filter2 = _.filter(justFriends, function(value, index){
 return filter2.length;
 }
 
-console.log(friendsWithLetter("adele mullen", "j"));
+console.log(friendsWithLetter(customers, "adele mullen", "j"));
 
 //8. FIND ALL CUSTOMERS WHO LIST A GIVEN CUSTOMER AS A FRIEND
 
-function isFriend(friendName){
+/* function isFriend(friendName){
     
 }
 
-console.log(isFriend("Cooley Jiminez"));
+console.log(isFriend("Cooley Jiminez")); */
 
 //9. FIND TOP 3 MOST COMMON TAGS
 

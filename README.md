@@ -32,9 +32,9 @@ Code and test your solutions in `index.js`. Customer data is available to you in
 
 X 1. Find the number of males.
 X 2. Find the number of females.
-3. Find the name and age of the oldest customer. 
-4. Find the name and age of the youngest customer.
-5. Find the average balance of all the customers.
+X 3. Find the name and age of the oldest customer. 
+X 4. Find the name and age of the youngest customer.
+X 5. Find the average balance of all the customers.
 X 6. Find how many customers' names begin with an arbitrary letter. Write a function to answer this question, then log an answer.
 X 7. Find how many customers' _friends'_ names begin with an arbitrary letter. Write a function to answer this question, then log an answer.
 8. Find the names of all customers who are friends with a given customer (by name). i.e. Which customers have that customer's name in their friends list?
