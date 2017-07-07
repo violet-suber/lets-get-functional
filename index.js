@@ -53,15 +53,17 @@ var ages = _.pluck(collection, "age");
 
 var oldest = Math.max.apply(Math, ages);
 
-var oldestData = {};
+var oldestArray = [];
 
 _.each(customers, function(v, i, a){
     if(v.age === oldest){
+        var oldestData = {};
         oldestData.name = v.name;
         oldestData.age =  v.age;
+        oldestArray.push(oldestData);
     }
 });
-return oldestData;
+return oldestArray;
 }
 
 console.log(findOldest(customers));
@@ -72,16 +74,18 @@ function findYoungest(collection){
 var ages = _.pluck(collection, "age");
 var youngest = Math.min.apply(Math, ages);
 
-var youngestData = {};
+var youngestArray = [];
 
 _.each(customers, function(v, i, a){
     if(v.age === youngest){
+        var youngestData = {};
         youngestData.name = v.name;
         youngestData.age =  v.age;
-    }
+        youngestArray.push(youngestData);
+        }
 });
 
-return youngestData;
+return youngestArray;
 }
 
 console.log(findYoungest(customers));
@@ -104,8 +108,15 @@ _.each(newBalances, function(v, i, a){
    balancesTotal += Number(v); 
 });
 
-var average = balancesTotal / balances.length; 
-return average;
+var average = balancesTotal / balances.length;
+var averageRounded = Math.round(average * 100) / 100;
+//I found this solution online about how to add commas in 4+ digit numbers and read up more on regex to understand how it works
+var averageString = averageRounded.toString();
+var averageArray = averageString.split(".");
+averageArray[0] = averageArray[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+var finalAverage = averageArray.join(".");
+
+return "$" + finalAverage;
 }
 
 console.log(averageBal(customers));
@@ -128,9 +139,7 @@ console.log(isLetter(customers, "s"));
 
 function friendsWithLetter(collection, customerName, letter) {
 var filtered = _.filter(collection, function(value){
-    var noCase = value.name.toUpperCase();
-    var noCase2 = customerName.toUpperCase();
-    return noCase === noCase2;
+    return value.name.toUpperCase() === customerName.toUpperCase();
 });
 
 var customerFriends = _.pluck(filtered, "friends");
@@ -147,18 +156,68 @@ console.log(friendsWithLetter(customers, "adele mullen", "j"));
 
 //8. FIND ALL CUSTOMERS WHO LIST A GIVEN CUSTOMER AS A FRIEND
 
-/* function isFriend(friendName){
-    
+function isFriend(collection, friendName){
+var friendsWith = [];
+  _.each(collection, function(v, i, a){
+    var friends = v.friends;
+    var justNames = _.pluck(friends, "name");
+   _.each(justNames, function(value, index, array){
+        if (value.toUpperCase() === friendName.toUpperCase()) {
+        friendsWith.push(v.name);
+    } 
+    });
+   
+  });
+  return friendsWith;
 }
 
-console.log(isFriend("Cooley Jiminez")); */
+console.log(isFriend(customers, "cooley jimenez"));
 
 //9. FIND TOP 3 MOST COMMON TAGS
 
-var allTags = _.pluck(customers, "tags");
+function findTop3(collection) {
+
+var allTags = _.pluck(collection, "tags");
 
 var tagsString =  allTags.join(",");
 
 var tagsArray = tagsString.split(",");
 
-console.log(tagsArray);
+var tagCount = {};
+
+_.each(tagsArray, function(value, index, array){
+    if (tagCount[value]) {
+        tagCount[value] += 1;
+    } else {
+        tagCount[value] = 1;
+    }
+});
+
+var topCounts = [];
+var counter = 0;
+
+_.each(tagCount, function(value, key, obj){
+    if (value >= counter){
+        counter = value;
+        topCounts.unshift(key);
+    }
+});
+
+var top3 = topCounts.slice(0, 3);
+
+return top3; }
+
+console.log(findTop3(customers));
+
+//10. SUMMARY OF GENDERS
+
+var genderSummary = _.reduce(customers, function(value, current){
+    if (value[current.gender]){
+        value[current.gender] += 1;
+    } else {
+        value[current.gender] = 1;
+    }
+    return value;
+}, {});
+
+console.log(genderSummary);
